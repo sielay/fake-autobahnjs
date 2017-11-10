@@ -1,6 +1,6 @@
 {
   "name": "fake-autobahnjs",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Fake/Mock autobahn that doesn't require setting up servers, etc, works like xhr-mock",
   "main": "dist/index.js",
   "scripts": {
@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
     "gulp-typescript": "^3.2.3",
     "istanbul": "^1.1.0-alpha.1",
     "jasmine": "^2.8.0",
