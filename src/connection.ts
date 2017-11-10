@@ -11,14 +11,10 @@ export class Connection {
 
     private url;
     private realm;
-    private isOpen:boolean = false;
+    public isConnected:boolean = false;
 
     private onOpen: IOnOpen = (session: Session, details: any): void => { };
     private onClose: IOnClose = (reason?: string, message?: string): void => { };
-
-    public get isConnected() {
-        return this.isOpen;
-    }
 
     public set onopen(fn: IOnOpen) {
         this.onOpen = fn;
@@ -45,14 +41,14 @@ export class Connection {
     public open(): void {
         const session:Session = new Session();
         session.realm = this.realm;
-        this.isOpen = true;
+        this.isConnected = true;
         if(this.onOpen) {
             this.onOpen(session, null);
         }
     }
 
     public close(reason?: string, message?: string): void {
-        this.isOpen = false;
+        this.isConnected = false;
         if(this.onClose) {
             this.onClose(reason, message);
         }
