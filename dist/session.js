@@ -2,9 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var WPromiseFactory = require("when");
 var server_1 = require("./server");
+var debug = require("debug");
+var l = debug("fake-autobahnjs - session");
 var Session = /** @class */ (function () {
     // constructor(transport: ITransport, defer: DeferFactory, challenge: OnChallengeHandler);
     function Session() {
+        l("consctruct");
     }
     Session.prototype.join = function (realm, authmethods, authid) {
         // TBD
@@ -19,6 +22,7 @@ var Session = /** @class */ (function () {
         return null;
     };
     Session.prototype.subscribe = function (topic, handler, options) {
+        l("subscribe to topic " + topic);
         var ref = this;
         var subscription = {
             topic: topic,
@@ -36,6 +40,8 @@ var Session = /** @class */ (function () {
         return null;
     };
     Session.prototype.unsubscribe = function (subscription) {
+        l("unsubscribe to from " + subscription.topic);
+        server_1.server.unsubscribe(subscription);
         return null;
     };
     Session.prototype.unregister = function (registration) {

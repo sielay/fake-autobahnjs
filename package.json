@@ -1,6 +1,6 @@
 {
   "name": "fake-autobahnjs",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Fake/Mock autobahn that doesn't require setting up servers, etc, works like xhr-mock",
   "main": "dist/index.js",
   "scripts": {
@@ -34,6 +34,7 @@
     "@types/jasmine": "^2.6.3",
     "@types/node": "^8.0.50",
     "@types/when": "^2.4.29",
+    "debug": "^3.1.0",
     "when": "^3.7.8"
   },
   "devDependencies": {

@@ -2,6 +2,9 @@ import { Session as ISession, IPublication, RegisterEndpoint, IRegisterOptions, 
 import { Promise as WPromise } from "when";
 import * as WPromiseFactory from "when";
 import { server } from "./server";
+import * as debug from "debug";
+
+const l = debug("fake-autobahnjs - session");
 
 export class Session {
 
@@ -16,7 +19,7 @@ export class Session {
 
     // constructor(transport: ITransport, defer: DeferFactory, challenge: OnChallengeHandler);
     constructor() {
-
+        l("consctruct");
     }
 
     public join(realm: string, authmethods: string[], authid: string): void {
@@ -36,6 +39,7 @@ export class Session {
     }
 
     public subscribe(topic: string, handler: SubscribeHandler, options?: ISubscribeOptions): WPromise<ISubscription> {
+        l("subscribe to topic " + topic);
         const ref = this;
         const subscription: ISubscription = {
             topic: topic,
@@ -55,6 +59,8 @@ export class Session {
     }
 
     public unsubscribe(subscription: ISubscription): WPromise<any> {
+        l("unsubscribe to from " + subscription.topic);
+        server.unsubscribe(subscription);
         return null;
     }
 
