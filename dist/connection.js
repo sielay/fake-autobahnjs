@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var session_1 = require("./session");
 var Connection = /** @class */ (function () {
     function Connection(options) {
+        this.isConnected = false;
         this.onOpen = function (session, details) { };
         this.onClose = function (reason, message) { };
         options = options || {};
@@ -32,11 +33,13 @@ var Connection = /** @class */ (function () {
     Connection.prototype.open = function () {
         var session = new session_1.Session();
         session.realm = this.realm;
+        this.isConnected = true;
         if (this.onOpen) {
             this.onOpen(session, null);
         }
     };
     Connection.prototype.close = function (reason, message) {
+        this.isConnected = false;
         if (this.onClose) {
             this.onClose(reason, message);
         }
