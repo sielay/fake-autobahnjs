@@ -31,18 +31,24 @@ var Connection = /** @class */ (function () {
         configurable: true
     });
     Connection.prototype.open = function () {
-        var session = new session_1.Session();
-        session.realm = this.realm;
-        this.isConnected = true;
-        if (this.onOpen) {
-            this.onOpen(session, null);
-        }
+        var that = this;
+        setTimeout(function () {
+            var session = new session_1.Session();
+            session.realm = that.realm;
+            that.isConnected = true;
+            if (that.onOpen) {
+                that.onOpen(session, null);
+            }
+        }, 10);
     };
     Connection.prototype.close = function (reason, message) {
-        this.isConnected = false;
-        if (this.onClose) {
-            this.onClose(reason, message);
-        }
+        var that = this;
+        setTimeout(function () {
+            that.isConnected = false;
+            if (that.onClose) {
+                that.onClose(reason, message);
+            }
+        }, 10);
     };
     return Connection;
 }());
