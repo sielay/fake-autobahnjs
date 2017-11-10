@@ -11,7 +11,7 @@ export class Connection {
 
     private url;
     private realm;
-    public isConnected:boolean = false;
+    public isConnected: boolean = false;
 
     private onOpen: IOnOpen = (session: Session, details: any): void => { };
     private onClose: IOnClose = (reason?: string, message?: string): void => { };
@@ -39,19 +39,25 @@ export class Connection {
     }
 
     public open(): void {
-        const session:Session = new Session();
-        session.realm = this.realm;
-        this.isConnected = true;
-        if(this.onOpen) {
-            this.onOpen(session, null);
-        }
+        const that = this;
+        setTimeout(() => {
+            const session: Session = new Session();
+            session.realm = that.realm;
+            that.isConnected = true;
+            if (that.onOpen) {
+                that.onOpen(session, null);
+            }
+        }, 10);
     }
 
     public close(reason?: string, message?: string): void {
-        this.isConnected = false;
-        if(this.onClose) {
-            this.onClose(reason, message);
-        }
+        const that = this;
+        setTimeout(() => {
+            that.isConnected = false;
+            if (that.onClose) {
+                that.onClose(reason, message);
+            }
+        }, 10);
     }
 
 }
