@@ -1,0 +1,47 @@
+{
+  "name": "fake-autobahnjs",
+  "version": "0.1.0",
+  "description": "Fake/Mock autobahn that doesn't require setting up servers, etc, works like xhr-mock",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "ts-node node_modules/jasmine/bin/jasmine.js ./src/index.spec.ts",
+    "test:coverage": "ts-node node_modules/istanbul/lib/cli.js cover -e .ts  -x \"*.d.ts\" -x \"*.spec.ts\" -x \"*.mock.ts\" node_modules/jasmine/bin/jasmine.js -- ./src/index.spec.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sielay/fake-autobahnjs.git"
+  },
+  "keywords": [
+    "autobahn",
+    "websockets",
+    "socket",
+    "node",
+    "jasmine",
+    "test",
+    "mock",
+    "fake",
+    "typescript",
+    "typings"
+  ],
+  "author": "lukaszsielski@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sielay/fake-autobahnjs/issues"
+  },
+  "homepage": "https://github.com/sielay/fake-autobahnjs#readme",
+  "dependencies": {
+    "@types/autobahn": "^0.9.37",
+    "@types/jasmine": "^2.6.3",
+    "@types/node": "^8.0.50",
+    "@types/when": "^2.4.29",
+    "when": "^3.7.8"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-typescript": "^3.2.3",
+    "istanbul": "^1.1.0-alpha.1",
+    "jasmine": "^2.8.0",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.6.1"
+  }
+}
